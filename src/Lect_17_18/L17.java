@@ -1,0 +1,39 @@
+package Lect_17_18;
+
+import java.util.ArrayList;
+
+public class L17 {
+    public static void main(String[] args) {
+        int[] arr1={9,9,9};
+        int[] arr2={9,9,9,9};
+        System.out.println(Sumoftwoarrays(arr1,arr2));
+    }
+
+    public static ArrayList<Integer> Sumoftwoarrays(int[] one, int[] two){
+        ArrayList<Integer> ans= new ArrayList<>();
+        int i=one.length-1;
+        int j=two.length-1;
+        int carry=0;
+        while (i>=0 || j>=0 ){
+            int sum=0;
+            if (i>=0){
+                sum+=one[i];
+            }
+            if (j>=0){
+                sum+=two[j];
+            }
+            sum+=carry;
+            int rem= sum%10;
+            carry=sum/10;
+
+            ans.add(0,rem);
+            i--;
+            j--;
+        }
+        if (carry!=0){
+            ans.add(0,carry);
+        }
+        return ans;
+
+    }
+}
